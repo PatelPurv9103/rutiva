@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Ride - Routiva</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="index.html" class="subscription-brand">
+            <img src="images/routiva-logo.png" alt="Routiva Logo" class="logo">
+        </a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="search.html">Search Ride</a>
+            <a href="rides.html">Available Rides</a>
+            <a href="my-rides.html">My Rides</a>
+            <a href="subscription.html">Subscription</a>
+        </div>
+        <div class="profile-avatar">
+            <img src="images/profile-avatar.png" alt="Profile">
+        </div>
+    </nav>
+
+    <!-- Booking Section -->
+    <section class="booking-section">
+
+        <div class="booking-heading">
+            <h1>Book Your Ride</h1>
+            <p>Reserve single trips or multi-day regular commutes with Pay-After-Ride protection.</p>
+        </div>
+
+        <div class="booking-layout">
+
+            <!-- Selected Ride Details -->
+            <div class="selected-ride">
+                <h2>Selected Ride</h2>
+                <div id="selectedRideDetails">
+                    <p style="color:#6b7280;">Loading ride details...</p>
+                </div>
+            </div>
+
+            <!-- Booking Form -->
+            <div class="booking-form-container">
+
+                <h2>Passenger & Commute Details</h2>
+                <p class="booking-subtitle">
+                    Enter your details, select commute schedule with exact calendar dates, and choose your payment method.
+                </p>
+
+                <form id="bookingForm">
+
+                    <div class="form-group">
+                        <label for="passengerName">Full Name</label>
+                        <input type="text" id="passengerName" placeholder="Enter your full name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="passengerEmail">Email Address</label>
+                        <input type="email" id="passengerEmail" placeholder="Enter your email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="passengerPhone">Phone Number</label>
+                        <input type="tel" id="passengerPhone" placeholder="Enter 10-digit mobile number" required pattern="[0-9]{10}">
+                    </div>
+
+                    <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                        <div class="form-group" style="flex: 1; min-width: 160px;">
+                            <label for="bookingSeats">Number of Seats</label>
+                            <select id="bookingSeats" required>
+                                <option value="1">1 Seat</option>
+                                <option value="2">2 Seats</option>
+                                <option value="3">3 Seats</option>
+                                <option value="4">4 Seats</option>
+                            </select>
+                        </div>
+                        <div class="form-group" style="flex: 1; min-width: 160px;">
+                            <label for="commuteStartDate">Commute Week Start Date</label>
+                            <input type="date" id="commuteStartDate" value="2026-11-23" required>
+                        </div>
+                    </div>
+
+                    <!-- Multi-Day Commute Selector with Full Date, Month, and Year ("je daily ride ma days select thay ema date ane month and year dekhye") -->
+                    <div class="days-selector-wrapper">
+                        <label class="title">
+                            📅 Select Daily Commute Dates (Date, Month & Year shown for each day):
+                        </label>
+                        <div class="days-pills-row" id="commuteDaysPills">
+                            <!-- Populated dynamically with full Date, Month, Year by script.js -->
+                        </div>
+                        <div class="day-quick-btns">
+                            <button type="button" class="day-quick-btn" id="btnAllWeekdays">⚡ Select All 5 Weekdays (Mon-Fri)</button>
+                            <button type="button" class="day-quick-btn" id="btnSingleDay">Single Day Only</button>
+                        </div>
+                    </div>
+
+                    <!-- Payment Method with Pay-After-Ride & Wallet Balance -->
+                    <div class="form-group" style="margin-top: 20px;">
+                        <label style="font-weight: 700; color: #1e293b; margin-bottom: 8px; display: block;">
+                            💳 Payment Method (Pay After Ride)
+                        </label>
+                        <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 14px; margin-bottom: 12px;">
+                            <label style="display: flex; align-items: flex-start; gap: 10px; cursor: pointer;">
+                                <input type="radio" name="paymentMethod" value="WALLET_AFTER_RIDE" checked style="margin-top: 3px; accent-color: #16a34a;">
+                                <div>
+                                    <strong style="color: #166534; font-size: 0.95rem;">Routiva In-App Wallet (Pay After Ride)</strong>
+                                    <p style="font-size: 0.82rem; color: #15803d; margin-top: 2px;">
+                                        ₹0 charged right now! Funds are safely deducted from your wallet only after you complete the ride.
+                                    </p>
+                                    <span style="display: inline-block; margin-top: 4px; font-size: 0.85rem; font-weight: 700; color: #166534;" id="walletBalanceDisplay">
+                                        💰 Wallet Balance: ₹500.00
+                                    </span>
+                                </div>
+                            </label>
+                        </div>
+
+                        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px;">
+                            <label style="display: flex; align-items: flex-start; gap: 10px; cursor: pointer;">
+                                <input type="radio" name="paymentMethod" value="CASH_AFTER_RIDE" style="margin-top: 3px; accent-color: #2563eb;">
+                                <div>
+                                    <strong style="color: #1e293b; font-size: 0.95rem;">Cash to Driver (Pay After Ride)</strong>
+                                    <p style="font-size: 0.82rem; color: #64748b; margin-top: 2px;">
+                                        Pay driver directly in cash when you arrive at your destination.
+                                    </p>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Fare Summary with Full Dates -->
+                    <div class="fare-summary" id="fareSummaryBox" style="margin-top: 20px;">
+                        <h3>Fare Summary</h3>
+                        <div class="fare-row">
+                            <span>Price Per Seat</span>
+                            <span id="fareRate">₹100</span>
+                        </div>
+                        <div class="fare-row">
+                            <span>Seats Selected</span>
+                            <span id="fareSeats">1</span>
+                        </div>
+                        <div class="fare-row" style="align-items: flex-start;">
+                            <span>Selected Commute Dates</span>
+                            <span id="fareDays" style="text-align: right; max-width: 65%; font-weight: 600; color: #1e293b;">Calculating dates...</span>
+                        </div>
+                        <div class="fare-row" id="discountRow" style="display: none; color: #16a34a;">
+                            <span>Weekly Commuter Discount (10%)</span>
+                            <span id="discountAmount">-₹0</span>
+                        </div>
+                        <div class="fare-total">
+                            <span>Total Fare Payable</span>
+                            <strong id="fareTotalAmount">₹100</strong>
+                        </div>
+                        <p style="font-size: 0.78rem; color: #059669; margin-top: 6px; font-weight: 600;">
+                            🛡️ Pay After Ride Protected: ₹0 charged right now.
+                        </p>
+                    </div>
+
+                    <button type="submit" class="login-submit" style="margin-top: 20px;">
+                        ✓ Confirm Booking (Pay After Ride)
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

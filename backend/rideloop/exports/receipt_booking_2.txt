@@ -1,0 +1,19 @@
+========================================================
+                   RIDELOOP BOOKING RECEIPT             
+========================================================
+Booking ID     : 2
+Passenger Name : Priyanshi Patel
+Passenger Email: priyanshi@gmail.com
+Passenger Phone: 9123456780
+Driver Name    : Amit Shah
+Vehicle        : Hyundai i20
+Route          : Ahmedabad -> Gandhinagar
+Travel Date    : 2026-11-25
+Departure Time : 09:30 AM
+Seats Booked   : 2
+Fare Per Seat  : Rs. 120.0
+Total Fare     : Rs. 240.0
+Status         : CONFIRMED
+Booking Time   : 2026-11-24 20:58:44
+========================================================
+Thank you for choosing RideLoop! Safe travels.

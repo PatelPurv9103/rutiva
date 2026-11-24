@@ -1,0 +1,28 @@
+# Maven build artifacts
+backend/rideloop/target/
+target/
+*.class
+
+# Package files
+*.jar
+*.war
+*.nar
+*.ear
+*.rar
+
+# Log files
+*.log
+
+# IDE and Editor files
+.idea/
+.vscode/
+*.iml
+*.iws
+*.ipr
+.project
+.classpath
+.settings/
+
+# OS generated files
+.DS_Store
+Thumbs.db

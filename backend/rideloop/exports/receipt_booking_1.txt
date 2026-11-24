@@ -1,0 +1,19 @@
+========================================================
+                   ROUTIVA BOOKING RECEIPT             
+========================================================
+Booking ID     : 1
+Passenger Name : Priyanshi Patel
+Passenger Email: priyanshi@gmail.com
+Passenger Phone: 9123456780
+Driver Name    : Vikram Singh
+Vehicle        : Royal Enfield Classic 350
+Route          : Ahmedabad -> Gandhinagar
+Travel Date    : 2026-11-25
+Departure Time : 08:15 AM
+Seats Booked   : 1
+Fare Per Seat  : Rs. 60.0
+Total Fare     : Rs. 270.0
+Status         : CONFIRMED
+Booking Time   : 2026-11-24 22:11:37
+========================================================
+Thank you for choosing Routiva! Safe travels.

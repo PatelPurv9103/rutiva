@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Available Rides - Routiva</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="index.html" class="subscription-brand">
+            <img src="images/routiva-logo.png" alt="Routiva Logo" class="logo">
+        </a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="search.html">Search Ride</a>
+            <a href="rides.html" class="active">Available Rides</a>
+            <a href="my-rides.html">My Rides</a>
+            <a href="subscription.html">Subscription</a>
+        </div>
+        <div class="profile-avatar">
+            <img src="images/profile-avatar.png" alt="Profile">
+        </div>
+    </nav>
+
+    <!-- Available Rides Section -->
+    <section class="available-section">
+
+        <div class="available-heading">
+            <h1>Available Rides</h1>
+            <p>Choose from multiple vehicle types: Cars, Bikes, SUVs, and Electric Vehicles across normal routes.</p>
+        </div>
+
+        <!-- Search Details / Route Summary with Time ("time select krva wadu") -->
+        <div class="route-summary" style="flex-wrap: wrap; gap: 15px;">
+            <div>
+                <span>FROM</span>
+                <h3 id="displayFrom">Ahmedabad</h3>
+            </div>
+            <div class="route-arrow">→</div>
+            <div>
+                <span>TO</span>
+                <h3 id="displayTo">Gandhinagar</h3>
+            </div>
+            <div>
+                <span>DATE</span>
+                <h3 id="displayDate">25 Nov 2026</h3>
+            </div>
+            <div>
+                <span>PREFERRED TIME</span>
+                <h3 id="displayTime" style="color: #2563eb;">08:00 AM</h3>
+            </div>
+        </div>
+
+        <!-- Time Slot Filters -->
+        <div style="display: flex; justify-content: center; gap: 8px; margin: 15px 0 10px 0; flex-wrap: wrap;" id="timeSlotFilters">
+            <button class="route-chip" data-time="ALL" type="button" style="font-weight: 600;">🕒 All Times</button>
+            <button class="route-chip" data-time="MORNING" type="button">🌅 Morning (06:00 - 11:00 AM)</button>
+            <button class="route-chip" data-time="AFTERNOON" type="button">☀️ Afternoon (12:00 - 04:00 PM)</button>
+            <button class="route-chip" data-time="EVENING" type="button">🌆 Evening (05:00 - 09:00 PM)</button>
+        </div>
+
+        <!-- Vehicle Category Filter Tabs -->
+        <div class="vehicle-filter-tabs" id="vehicleFilterTabs">
+            <button class="vehicle-tab active" data-type="ALL" type="button">
+                🌟 All Vehicles <span class="count-badge" id="countAll">0</span>
+            </button>
+            <button class="vehicle-tab" data-type="CAR" type="button">
+                🚗 Cars <span class="count-badge" id="countCar">0</span>
+            </button>
+            <button class="vehicle-tab" data-type="BIKE" type="button">
+                🏍️ Bikes (Economical) <span class="count-badge" id="countBike">0</span>
+            </button>
+            <button class="vehicle-tab" data-type="SUV" type="button">
+                🚙 SUVs (Spacious) <span class="count-badge" id="countSuv">0</span>
+            </button>
+            <button class="vehicle-tab" data-type="EV" type="button">
+                ⚡ EVs (Eco) <span class="count-badge" id="countEv">0</span>
+            </button>
+        </div>
+
+        <!-- Dynamic Rides Container -->
+        <div class="rides-list" id="ridesContainer">
+            <div style="text-align:center;padding:40px;color:#6b7280;font-size:1.1rem;">
+                Loading available rides...
+            </div>
+        </div>
+
+    </section>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

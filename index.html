@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Routiva - Smart Ride Sharing</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <header>
+        <nav class="navbar">
+
+            <a href="index.html" class="subscription-brand">
+                <img src="images/routiva-logo.png" alt="Routiva Logo" class="logo">
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="search.html">Find a Ride</a></li>
+                <li><a href="rides.html">Available Rides</a></li>
+                <li><a href="subscription.html">Subscriptions</a></li>
+                <li><a href="my-rides.html">My Rides</a></li>
+                <li><a href="about.html">About Us</a></li>
+            </ul>
+
+            <div class="profile-avatar">
+                <img src="images/profile-avatar.png" alt="Profile">
+            </div>
+        </nav>
+    </header>
+
+
+    <!-- Hero Section (Picture Image Removed - Replaced with Interactive Ride Search Card) -->
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <p class="tagline">SMART TRANSPORTATION</p>
+
+            <h1>
+                Your Daily Ride,<br>
+                One Smart Subscription.
+            </h1>
+
+            <p class="description">
+                Share your daily commute with verified drivers across Ahmedabad, Gandhinagar, Bavla & more. Choose from Cars, Bikes, SUVs, and EVs with Pay-After-Ride protection.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="search.html" class="primary-btn">
+                    Find a Ride
+                </a>
+
+                <a href="subscription.html" class="secondary-btn">
+                    Explore Plans
+                </a>
+            </div>
+
+        </div>
+
+        <!-- Clean Interactive Card (No Picture Image) -->
+        <div class="hero-search-card" style="flex: 1; max-width: 480px; background: #ffffff; padding: 30px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border: 1px solid #e2e8f0;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
+                <h3 style="font-size: 1.25rem; color: #1e293b; font-weight: 700;">Find Available Rides</h3>
+                <span class="pay-after-pill">🛡️ Pay After Ride</span>
+            </div>
+
+            <div style="display: flex; gap: 6px; margin-bottom: 18px; flex-wrap: wrap;">
+                <span class="vehicle-tag car">🚗 Car</span>
+                <span class="vehicle-tag bike">🏍️ Bike</span>
+                <span class="vehicle-tag suv">🚙 SUV</span>
+                <span class="vehicle-tag ev">⚡ EV</span>
+            </div>
+
+            <form action="rides.html" method="GET">
+                <div style="margin-bottom: 12px;">
+                    <label style="font-size: 0.82rem; font-weight: 600; color: #64748b; display: block; margin-bottom: 4px;">From</label>
+                    <input type="text" name="from" value="Ahmedabad" placeholder="Starting location" required style="width: 100%; padding: 10px 14px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 0.95rem;">
+                </div>
+
+                <div style="margin-bottom: 12px;">
+                    <label style="font-size: 0.82rem; font-weight: 600; color: #64748b; display: block; margin-bottom: 4px;">To</label>
+                    <input type="text" name="to" value="Gandhinagar" placeholder="Destination" required style="width: 100%; padding: 10px 14px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 0.95rem;">
+                </div>
+
+                <div style="display: flex; gap: 10px; margin-bottom: 18px;">
+                    <div style="flex: 1;">
+                        <label style="font-size: 0.82rem; font-weight: 600; color: #64748b; display: block; margin-bottom: 4px;">Date</label>
+                        <input type="date" name="date" value="2026-11-25" required style="width: 100%; padding: 9px 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 0.9rem;">
+                    </div>
+                    <div style="flex: 1;">
+                        <label style="font-size: 0.82rem; font-weight: 600; color: #64748b; display: block; margin-bottom: 4px;">Time</label>
+                        <input type="time" name="time" value="08:00" required style="width: 100%; padding: 9px 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 0.9rem;">
+                    </div>
+                </div>
+
+                <button type="submit" style="width: 100%; padding: 12px; background: #2563eb; color: #ffffff; border: none; border-radius: 8px; font-weight: 700; font-size: 1rem; cursor: pointer; transition: background 0.2s;">
+                    🔍 Search Rides Now
+                </button>
+            </form>
+        </div>
+
+    </section>
+
+
+    <!-- Features Section -->
+    <section class="features">
+
+        <div class="section-heading">
+            <h2>Why Choose Routiva?</h2>
+            <p>Make your everyday travel easier, faster and economical.</p>
+        </div>
+
+        <div class="feature-container">
+
+            <div class="feature-card">
+                <div class="feature-icon">🚗</div>
+                <h3>Multiple Vehicle Options</h3>
+                <p>Choose from Cars, Bikes, SUVs, and Eco-friendly EVs for your daily commute.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">💳</div>
+                <h3>Pay After Ride Wallet</h3>
+                <p>₹0 charged upfront. Fare is safely deducted only after your trip completes.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📅</div>
+                <h3>Multi-Day Commuter Pass</h3>
+                <p>Select your commute dates together (Mon-Fri) and get a 10% regular discount.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+        <h2>Routiva</h2>
+        <p>Your Daily Ride, One Smart Subscription.</p>
+        <p>© 2026 Routiva. All Rights Reserved.</p>
+    </footer>
+
+
+    <script src="js/script.js"></script>
+
+</body>
+</html>

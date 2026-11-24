@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Ride - Routiva</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="login-page">
+
+    <div class="login-container search-container" style="max-width: 560px;">
+
+        <a href="index.html" class="subscription-brand">
+            <img src="images/routiva-logo.png" alt="Routiva Logo" class="logo" style="margin: 0 auto 10px auto;">
+        </a>
+
+        <h1>Find Your Ride</h1>
+        <p class="login-subtitle">
+            Search for affordable rides across normal routes with Cars, Bikes, SUVs & EVs.
+        </p>
+
+        <!-- Quick Normal Route Chips -->
+        <div class="route-chips-container">
+            <span class="route-chips-label">📍 Popular Daily Commute Routes:</span>
+            <div class="route-chips">
+                <button type="button" class="route-chip" onclick="selectQuickRoute('Ahmedabad', 'Gandhinagar')">Ahmedabad ➔ Gandhinagar</button>
+                <button type="button" class="route-chip" onclick="selectQuickRoute('Bavla', 'Ahmedabad')">Bavla ➔ Ahmedabad</button>
+                <button type="button" class="route-chip" onclick="selectQuickRoute('SG Highway', 'Infocity')">SG Highway ➔ Infocity</button>
+                <button type="button" class="route-chip" onclick="selectQuickRoute('Ahmedabad', 'Vadodara')">Ahmedabad ➔ Vadodara</button>
+            </div>
+        </div>
+
+        <form id="searchRideForm">
+
+            <div class="form-group">
+                <label for="from">From (Starting Location)</label>
+                <input type="text" id="from" placeholder="e.g. Ahmedabad, Bavla, SG Highway" value="Ahmedabad" required>
+            </div>
+
+            <div class="form-group">
+                <label for="to">To (Destination)</label>
+                <input type="text" id="to" placeholder="e.g. Gandhinagar, Infocity, Vadodara" value="Gandhinagar" required>
+            </div>
+
+            <div class="form-group">
+                <label for="vehicleType">Vehicle Type</label>
+                <select id="vehicleType">
+                    <option value="ALL">🚘 All Vehicle Options (Cars, Bikes, SUVs, EVs)</option>
+                    <option value="CAR">🚗 Personal Car (Affordable Shared Commute)</option>
+                    <option value="BIKE">🏍️ Bike / Two-Wheeler (Fast & Economical - ₹40-60)</option>
+                    <option value="SUV">🚙 SUV / Large Vehicle (Spacious & Comfortable)</option>
+                    <option value="EV">⚡ Electric Vehicle / EV (Eco-Friendly Travel)</option>
+                </select>
+            </div>
+
+            <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                <div class="form-group" style="flex: 1; min-width: 180px;">
+                    <label for="travelDate">Travel Date</label>
+                    <input type="date" id="travelDate" required>
+                </div>
+
+                <!-- Departure Time Selection ("time select krva wadu") -->
+                <div class="form-group" style="flex: 1; min-width: 180px;">
+                    <label for="departureTime">Preferred Departure Time</label>
+                    <input type="time" id="departureTime" value="08:00" required>
+                </div>
+            </div>
+
+            <!-- Quick Time Slot Filters -->
+            <div style="margin-bottom: 18px;">
+                <label style="font-size: 0.82rem; font-weight: 600; color: #64748b; display: block; margin-bottom: 6px;">
+                    🕒 Or Choose Preferred Time Slot:
+                </label>
+                <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+                    <button type="button" class="route-chip" onclick="setTimeSlot('08:00', 'MORNING')">🌅 Morning (07:00 - 10:00 AM)</button>
+                    <button type="button" class="route-chip" onclick="setTimeSlot('13:00', 'AFTERNOON')">☀️ Afternoon (12:00 - 03:00 PM)</button>
+                    <button type="button" class="route-chip" onclick="setTimeSlot('18:00', 'EVENING')">🌆 Evening (05:00 - 08:00 PM)</button>
+                    <button type="button" class="route-chip" onclick="setTimeSlot('', 'ANY')">🕒 Any Time</button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="seats">Number of Seats</label>
+                <select id="seats" required>
+                    <option value="1" selected>1 Seat</option>
+                    <option value="2">2 Seats</option>
+                    <option value="3">3 Seats</option>
+                    <option value="4">4 Seats</option>
+                </select>
+            </div>
+
+            <button type="submit" class="login-submit">
+                🔍 Search Available Rides
+            </button>
+
+        </form>
+
+        <a href="index.html" class="back-home">
+            ← Back to Home
+        </a>
+
+    </div>
+
+    <script src="js/script.js"></script>
+    <script>
+        function selectQuickRoute(from, to) {
+            document.getElementById('from').value = from;
+            document.getElementById('to').value = to;
+        }
+
+        function setTimeSlot(timeVal, slotName) {
+            const timeInput = document.getElementById('departureTime');
+            if (timeInput && timeVal) {
+                timeInput.value = timeVal;
+            }
+            timeInput.setAttribute('data-slot', slotName);
+        }
+    </script>
+</body>
+</html>

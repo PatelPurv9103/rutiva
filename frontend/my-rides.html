@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Routiva - My Rides</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="my-rides-page">
+
+    <!-- Navbar -->
+    <header class="my-rides-navbar">
+        <a href="index.html" class="my-rides-brand">
+            <img src="images/routiva-logo.png" alt="Routiva Logo">
+        </a>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="search.html">Find Ride</a>
+            <a href="rides.html">Available Rides</a>
+            <a href="subscription.html">Subscription</a>
+            <a href="my-rides.html" class="active">My Rides</a>
+            <a href="about.html">About Us</a>
+        </nav>
+
+        <div class="profile-avatar">
+            <img src="images/profile-avatar.png" alt="Profile">
+        </div>
+    </header>
+
+    <!-- Page Heading -->
+    <section class="my-rides-heading">
+        <p class="my-rides-tag">YOUR JOURNEY & WALLET</p>
+        <h1>My <span>Rides</span></h1>
+        <p>
+            Manage your bookings, mark rides completed with Pay-After-Ride wallet deduction, or cancel anytime.
+        </p>
+
+        <!-- Driver Action: Offer Ride -->
+        <div style="margin-top: 15px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+            <button type="button" class="primary-btn" id="openOfferRideBtn" style="padding: 9px 20px; background: #2563eb; color: #fff; border: none; border-radius: 6px; font-weight: 600; cursor: pointer;">
+                ➕ Offer / Publish a Ride (Driver)
+            </button>
+            <a id="csvExportBtn" class="primary-btn" href="#" style="padding: 9px 20px; background: #10b981; color: #fff; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 0.9rem;">
+                📥 Download History (CSV)
+            </a>
+        </div>
+    </section>
+
+    <!-- Wallet Banner -->
+    <div class="wallet-card-banner">
+        <div class="wallet-info">
+            <h3>💰 Routiva In-App Wallet</h3>
+            <p>Pay-After-Ride Protected: Fare is safely deducted only after you complete the ride!</p>
+        </div>
+        <div class="wallet-balance-box">
+            <span>Available Balance</span>
+            <strong id="userWalletBalance">₹500.00</strong>
+        </div>
+    </div>
+
+    <!-- Booking Summary Cards -->
+    <section class="ride-summary">
+        <div class="summary-card">
+            <div class="summary-icon">🚗</div>
+            <div>
+                <h2 id="totalRidesCount">0</h2>
+                <p>Total Bookings</p>
+            </div>
+        </div>
+
+        <div class="summary-card">
+            <div class="summary-icon">📅</div>
+            <div>
+                <h2 id="upcomingRidesCount">0</h2>
+                <p>Active Rides</p>
+            </div>
+        </div>
+
+        <div class="summary-card">
+            <div class="summary-icon">✓</div>
+            <div>
+                <h2 id="completedRidesCount">0</h2>
+                <p>Completed Trips</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ride Categories Tabs & Content -->
+    <section class="my-rides-content">
+
+        <div class="ride-tabs">
+            <button class="ride-tab active" id="tabUpcoming" type="button">
+                Active / Upcoming
+            </button>
+            <button class="ride-tab" id="tabCompleted" type="button">
+                Completed Trips
+            </button>
+            <button class="ride-tab" id="tabCancelled" type="button">
+                Cancelled
+            </button>
+        </div>
+
+        <!-- Bookings Container -->
+        <div id="myRidesListContainer" style="margin-top: 25px;">
+            <div style="text-align: center; padding: 40px; color: #6b7280;">
+                Loading your booked rides...
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Offer Ride Modal (For Drivers) -->
+    <div class="modal-overlay" id="offerRideModal">
+        <div class="modal-box">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                <h2 style="font-size: 1.25rem; color: #1e293b;">➕ Offer / Publish a Ride</h2>
+                <button type="button" id="closeOfferRideBtn" style="background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #64748b;">&times;</button>
+            </div>
+            <form id="offerRideForm">
+                <div class="form-group" style="margin-bottom: 12px;">
+                    <label style="font-size: 0.85rem; font-weight: 600; display: block; margin-bottom: 4px;">From (Origin)</label>
+                    <input type="text" id="offerFrom" placeholder="e.g. Ahmedabad, Bavla, SG Highway" required style="width: 100%; padding: 8px 12px; border: 1px solid #cbd5e1; border-radius: 6px;">
+                </div>
+                <div class="form-group" style="margin-bottom: 12px;">
+                    <label style="font-size: 0.85rem; font-weight: 600; display: block; margin-bottom: 4px;">To (Destination)</label>
+                    <input type="text" id="offerTo" placeholder="e.g. Gandhinagar, Infocity, Vadodara" required style="width: 100%; padding: 8px 12px; border: 1px solid #cbd5e1; border-radius: 6px;">
+                </div>
+                <div class="form-group" style="margin-bottom: 12px;">
+                    <label style="font-size: 0.85rem; font-weight: 600; display: block; margin-bottom: 4px;">Vehicle Type</label>
+                    <select id="offerVehicleType" style="width: 100%; padding: 8px 12px; border: 1px solid #cbd5e1; border-radius: 6px;">
+                        <option value="CAR">🚗 Car</option>
+                        <option value="BIKE">🏍️ Bike / Two-Wheeler</option>
+                        <option value="SUV">🚙 SUV</option>
+                        <option value="EV">⚡ Electric Vehicle (EV)</option>
+                    </select>
+                </div>
+                <div class="form-group" style="margin-bottom: 12px;">
+                    <label style="font-size: 0.85rem; font-weight: 600; display: block; margin-bottom: 4px;">Vehicle Name / Model</label>
+                    <input type="text" id="offerVehicleName" placeholder="e.g. Maruti Swift, Royal Enfield, Nexon EV" required style="width: 100%; padding: 8px 12px; border: 1px solid #cbd5e1; border-radius: 6px;">
+                </div>
+                <div style="display: flex; gap: 10px; margin-bottom: 12px;">
+                    <div style="flex: 1;">
+                        <label style="font-size: 0.85rem; font-weight: 600; display: block; margin-bottom: 4px;">Available Seats</label>
+                        <input type="number" id="offerSeats" min="1" max="7" value="3" required style="width: 100%; padding: 8px 12px; border: 1px solid #cbd5e1; border-radius: 6px;">
+                    </div>
+                    <div style="flex: 1;">
+                        <label style="font-size: 0.85rem; font-weight: 600; display: block; margin-bottom: 4px;">Price Per Seat (₹)</label>
+                        <input type="number" id="offerPrice" min="10" max="1000" value="100" required style="width: 100%; padding: 8px 12px; border: 1px solid #cbd5e1; border-radius: 6px;">
+                    </div>
+                </div>
+                <div style="display: flex; gap: 10px; margin-bottom: 16px;">
+                    <div style="flex: 1;">
+                        <label style="font-size: 0.85rem; font-weight: 600; display: block; margin-bottom: 4px;">Date</label>
+                        <input type="date" id="offerDate" required style="width: 100%; padding: 8px 12px; border: 1px solid #cbd5e1; border-radius: 6px;">
+                    </div>
+                    <div style="flex: 1;">
+                        <label style="font-size: 0.85rem; font-weight: 600; display: block; margin-bottom: 4px;">Departure Time</label>
+                        <input type="text" id="offerTime" placeholder="e.g. 08:30 AM" required style="width: 100%; padding: 8px 12px; border: 1px solid #cbd5e1; border-radius: 6px;">
+                    </div>
+                </div>
+                <button type="submit" style="width: 100%; padding: 10px; background: #2563eb; color: #fff; border: none; border-radius: 6px; font-weight: 700; cursor: pointer;">
+                    🚀 Publish Ride
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
